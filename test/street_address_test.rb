@@ -645,6 +645,10 @@ class StreetAddressUsTest < MiniTest::Test
     refute_equal addr, nil
   end
 
+  def test_empty_string_with_commas
+    assert_equal StreetAddress::US.parse(', , '), nil
+  end
+
   def compare_expected_to_actual_hash(expected, actual, address)
     expected.each_pair do |expected_key, expected_value|
       assert_equal actual[expected_key], expected_value, "For address '#{address}',  #{actual[expected_key]} != #{expected_value}"

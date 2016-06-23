@@ -777,7 +777,7 @@ module StreetAddress
           }
 
           input['redundant_street_type'] = false
-          if( input['street'] && !input['street_type'] )
+	  if( input['street'] && !input['street_type'] && match = street_regexp.match(input['street']))
             match = street_regexp.match(input['street'])
             input['street_type'] = match['street_type']
           input['redundant_street_type'] = true
